@@ -1,0 +1,38 @@
+# dependencies
+node_modules/
+
+# build outputs
+.output/
+dist/
+build/
+.wxt/
+
+# package manager
+.pnpm-store/
+
+# env
+.env
+.env.*
+!.env.example
+
+# logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+
+# OS / editor
+.DS_Store
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+
+# test / coverage
+coverage/
+playwright-report/
+test-results/
+
+# extension packages
+*.crx
+*.pem
+*.zip

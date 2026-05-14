@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="manifest.open_in_tab" content="true" />
+    <title>Job Mute 설정</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>Job Mute 설정</h1>
+        <button id="save" type="button">저장</button>
+      </header>
+      <section>
+        <label for="title-keywords">직무명 키워드</label>
+        <textarea id="title-keywords" rows="8"></textarea>
+      </section>
+      <section>
+        <label for="company-keywords">회사명 키워드</label>
+        <textarea id="company-keywords" rows="8"></textarea>
+      </section>
+      <p id="status" role="status"></p>
+    </main>
+    <script type="module" src="./main.ts"></script>
+  </body>
+</html>
