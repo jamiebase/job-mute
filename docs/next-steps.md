@@ -62,26 +62,32 @@ PRD의 핵심 전제인 “Wanted 전용 로컬 확장으로 MVP를 검증한다
 1. `extractJobCard` hostname 검증 추가
    - 관련 파일: `src/filters/extractJobCard.ts`
    - 이유: 작은 수정으로 외부 링크 오탐과 popup 신뢰 리스크를 줄인다.
+   - 상태: 완료. `wanted.co.kr`, `www.wanted.co.kr` 외 도메인은 공고 ID로 인정하지 않으며 회귀 테스트를 추가했다.
 
 2. 실제 Wanted DOM 검증
    - 관련 파일: `src/filters/extractJobCard.ts`, `entrypoints/content.ts`
    - 확인할 것: 목록 링크 패턴, 카드 root selector, 회사명 selector, 상세 페이지 제목/회사 추출 가능성.
+   - 상태: 미완료. 브라우저 검증 에이전트 호출은 보안 필터로 실패했다.
 
 3. 상세 페이지 지원
    - 관련 파일: `entrypoints/content.ts`, `src/ui/contentControls.ts`, `src/filters/extractJobCard.ts`
    - 구현할 것: 현재 공고 식별, 숨김 대상 안내 배너, 현재 공고 숨김, 이번만 보기.
+   - 상태: 완료. 상세 페이지 제어 패널, 현재 공고 숨김, 숨김 대상 안내, `이번만 보기`를 추가했다.
 
 4. 회사 숨김 명시 액션
    - 관련 파일: `src/ui/contentControls.ts`, `entrypoints/content.ts`, `src/storage/settings.ts`
    - 구현할 것: 카드/상세에서 회사명 키워드를 바로 추가하는 액션.
+   - 상태: 완료. 목록 카드와 상세 페이지에서 회사 키워드 규칙을 바로 추가할 수 있다.
 
 5. 개인정보/스토어 문서 초안
    - 관련 파일 후보: `docs/privacy.md`
    - 포함할 것: 저장 항목, 저장 위치, 외부 미전송, 삭제 방법, 권한 사용 이유.
+   - 상태: 완료. `docs/privacy.md`를 추가하고 README에 링크했다.
 
 6. 성능 계측과 observer 범위 축소
    - 관련 파일: `entrypoints/content.ts`
    - 기준: 목록 100개 카드 기준 300ms 이내, 스크롤 중 체감 지연 없음.
+   - 상태: 미완료. 실제 Wanted DOM 검증 이후 측정하는 편이 정확하다.
 
 ## 바로 맡기기 좋은 다음 에이전트
 

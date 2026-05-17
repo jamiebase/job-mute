@@ -1,6 +1,7 @@
 import type { JobCardInfo } from '../types';
 
 const JOB_LINK_PATTERN = /\/(?:wd|jobs)\/(\d+)/;
+const WANTED_HOSTS = new Set(['wanted.co.kr', 'www.wanted.co.kr']);
 const CARD_SELECTOR = [
   'li',
   'article',
@@ -23,17 +24,21 @@ const COMPANY_SELECTOR = [
   '[class*="Company" i]',
 ].join(',');
 
-function toAbsoluteUrl(href: string): URL | undefined {
+function toAbsoluteUrl(href: string, baseOrigin?: string): URL | undefined {
   try {
-    return new URL(href, window.location.origin);
+    return baseOrigin ? new URL(href, baseOrigin) : new URL(href);
   } catch {
     return undefined;
   }
 }
 
-export function getWantedJobId(href: string): string | undefined {
-  const url = toAbsoluteUrl(href);
+export function getWantedJobId(
+  href: string,
+  currentOrigin = typeof window !== 'undefined' ? window.location.origin : undefined,
+): string | undefined {
+  const url = toAbsoluteUrl(href, currentOrigin);
   if (!url) return undefined;
+  if (!WANTED_HOSTS.has(url.hostname)) return undefined;
 
   const match = url.pathname.match(JOB_LINK_PATTERN);
   return match?.[1];

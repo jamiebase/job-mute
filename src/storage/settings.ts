@@ -21,3 +21,27 @@ export function parseKeywords(value: string): string[] {
 export function stringifyKeywords(keywords: string[]): string {
   return keywords.join('\n');
 }
+
+function normalizeKeyword(keyword: string): string {
+  return keyword.normalize('NFKC').trim().toLocaleLowerCase('ko-KR');
+}
+
+export async function addCompanyKeyword(keyword: string): Promise<FilterRules> {
+  const nextKeyword = keyword.trim();
+  if (!nextKeyword) return filterRulesItem.getValue();
+
+  const rules = await filterRulesItem.getValue();
+  const alreadyExists = rules.companyKeywords.some(
+    (companyKeyword) => normalizeKeyword(companyKeyword) === normalizeKeyword(nextKeyword),
+  );
+
+  if (alreadyExists) return rules;
+
+  const nextRules = {
+    ...rules,
+    companyKeywords: [...rules.companyKeywords, nextKeyword],
+  };
+
+  await filterRulesItem.setValue(nextRules);
+  return nextRules;
+}

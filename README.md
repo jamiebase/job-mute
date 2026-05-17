@@ -31,6 +31,8 @@ Chrome에서 개발 빌드를 직접 올릴 때는 `pnpm build` 후 `.output/chr
 
 - Wanted 공고 링크(`/wd/:id`, `/jobs/:id`)를 기준으로 채용 카드를 탐지합니다.
 - 공고 카드에 `숨김` 버튼을 추가합니다.
+- 공고 카드와 상세 페이지에서 회사 숨김 규칙을 추가할 수 있습니다.
+- 상세 페이지에서 숨김 대상 안내와 `이번만 보기`를 제공합니다.
 - 숨긴 공고는 `chrome.storage.local`에 저장하고 목록 재방문 시 다시 숨깁니다.
 - 옵션 페이지에서 직무명/회사명 키워드 필터를 저장할 수 있습니다.
 
@@ -38,6 +40,7 @@ Chrome에서 개발 빌드를 직접 올릴 때는 `pnpm build` 후 `.output/chr
 
 - [MVP PRD](docs/mvp-prd.md)
 - [Next Steps](docs/next-steps.md)
+- [Privacy & Store Disclosure](docs/privacy.md)
 
 ## 근거
 
